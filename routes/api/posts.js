@@ -145,7 +145,7 @@ router.delete('/comment/:id/:comment_id', passport.authenticate('jwt', { session
     Post.findById(req.params.id)
     .then(post => {
         if(post.comments.filter(comment => comment._id.toString() === req.params.comment_id).length === 0) {
-            return res.status(404).json( { commentnotfound: 'Comment does not exist'});
+            return res.status(404).json( { commentdoesnotexist: 'Comment does not exist'});
         }
         const removeIndex = post.comments
             .map(item => item._id.toString())
